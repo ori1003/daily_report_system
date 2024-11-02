@@ -1,6 +1,5 @@
 package controllers;
 
-import java.awt.Desktop.Action;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -54,10 +53,10 @@ public class FrontController extends HttpServlet {
             String actionString=request.getParameter(ForwardConst.ACT.getValue());
 
             //該当するActionオブジェクトを作成
-            type=Class.forName(String.format("action.%sAction", actionString));
+            type=Class.forName(String.format("actions.%sAction", actionString));
 
             //ActionBaseのオブジェクトにキャスト
-            action=(ActionBase)(type.asSubclass(Action.class)
+            action=(ActionBase)(type.asSubclass(ActionBase.class)
                     .getDeclaredConstructor()
                     .newInstance());
         } catch (ClassNotFoundException|InstantiationException|IllegalAccessException|IllegalArgumentException

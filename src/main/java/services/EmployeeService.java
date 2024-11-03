@@ -94,8 +94,8 @@ public class EmployeeService extends ServiceBace{
      */
     public List<String>creat(EmployeeView ev,String pepper){
         //パスワードをハッシュ化して設定
-        String pass=EncryptUtil.getPasswordEncrypt(ev.getPasword(), pepper);
-        ev.setPasword(pass);
+        String pass=EncryptUtil.getPasswordEncrypt(ev.getPassword(), pepper);
+        ev.setPassword(pass);
 
         //登録日時、更新日時は現在時刻を設定する
         LocalDateTime now=LocalDateTime.now();
@@ -106,7 +106,7 @@ public class EmployeeService extends ServiceBace{
         List<String> errors=EmployeeValidator.validate(this, ev, true, true);
 
         //バリデーションエラーがなければデータを登録する
-        if(errors.size()>0) {
+        if(errors.size()==0) {
             create(ev);
         }
 
@@ -135,14 +135,14 @@ public class EmployeeService extends ServiceBace{
         }
 
         boolean validatePass=false;
-        if(ev.getPasword()!=null&&!ev.getPasword().equals("")) {
+        if(ev.getPassword()!=null&&!ev.getPassword().equals("")) {
             //パスワード入力がある場合
 
             //パスワードについてのバリデーションを行う
             validatePass=true;
 
             //変更後のパスワードをハッシュ化し設定する
-            savedEmp.setPasword(EncryptUtil.getPasswordEncrypt(ev.getPasword(), pepper));
+            savedEmp.setPassword(EncryptUtil.getPasswordEncrypt(ev.getPassword(), pepper));
         }
 
         savedEmp.setName(ev.getName());//変更後の氏名を設定する

@@ -34,7 +34,7 @@ public class EmployeeValidator {
         }
 
         //パスワードのチェック
-        String passError=validatePassword(ev.getPasword(),passwordCheckFlag);
+        String passError=validatePassword(ev.getPassword(),passwordCheckFlag);
         if(!passError.equals("")) {
             errors.add(passError);
         }

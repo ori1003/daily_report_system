@@ -19,7 +19,7 @@ public class EmployeeConverter {
                 ev.getId(),
                 ev.getCode(),
                 ev.getName(),
-                ev.getPasword(),
+                ev.getPassword(),
                 ev.getAdminFlag()==null
                         ?null
                         :ev.getDeleteFlag()==AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
@@ -87,7 +87,7 @@ public class EmployeeConverter {
         e.setId(ev.getId());
         e.setCode(ev.getCode());
         e.setName(ev.getName());
-        e.setPassword(ev.getPasword());
+        e.setPassword(ev.getPassword());
         e.setAdminFlag(ev.getAdminFlag());
         e.setCreatedAt(ev.getCreatedAt());
         e.setUpdatedAt(ev.getUpdatedAt());

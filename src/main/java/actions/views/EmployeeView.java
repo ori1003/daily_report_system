@@ -23,7 +23,7 @@ public class EmployeeView {
     private String name;
 
     //パスワード
-    private String pasword;
+    private String password;
 
     //管理者権限(一般：0、管理者：1)
     private Integer adminFlag;

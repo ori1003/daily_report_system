@@ -21,7 +21,7 @@ public enum AttributeConst {
     LOGIN_ERR("loginError"),
 
     //従業員管理
-    ENPLOYEE("employee"),
+    EMPLOYEE("employee"),
     EMPLOYEES("employees"),
     EMP_COUNT("employees_count"),
     EMP_ID("id"),

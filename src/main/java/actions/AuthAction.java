@@ -4,8 +4,11 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
+import actions.views.EmployeeView;
 import constants.AttributeConst;
 import constants.ForwardConst;
+import constants.MessageConst;
+import constants.PropertyConst;
 import services.EmployeeService;
 
 //認証に関する処理を行うクラス
@@ -43,5 +46,45 @@ public class AuthAction extends ActionBase {
         //ログイン画面を表示
         forward(ForwardConst.FW_LOGIN);
 
+    }
+
+    /**
+     * ログイン処理を行う
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void login() throws ServletException,IOException{
+        String code=getRequestParam(AttributeConst.EMP_CODE);
+        String plainPass=getRequestParam(AttributeConst.EMP_PASS);
+        String pepper=getContextScope(PropertyConst.PEPPER);
+
+        //有効な従業員か認証する
+        Boolean isValidEmployee=service.validateLogin(code, plainPass, pepper);
+
+        if(isValidEmployee) {
+            //認証成功
+            //CSRF対策用トークンのチェック
+            if(checkToken()) {
+                //ログインした従業員のDBデータを取得
+                EmployeeView ev=service.findOne(code,plainPass,pepper);
+                //セッションにログインした従業員を設定
+                putSessionScope(AttributeConst.LOGIN_EMP,ev);
+                //セッションにログイン完了のフラッシュメッセージを設定
+                putSessionScope(AttributeConst.FLUSH,MessageConst.I_LOGINED.getMessage());
+                //トップページへリダイレクト
+                redirect(ForwardConst.ACT_TOP,ForwardConst.CMD_INDEX);
+            }
+        }else {
+            //認証失敗
+            //CSRF対策用トークンを設定
+            putRequestScope(AttributeConst.TOKEN,getTokenId());
+            //認証失敗メッセージ表示フラグを立てる
+            putRequestScope(AttributeConst.LOGIN_ERR,true);
+            //入力された従業員コードを設定
+            putRequestScope(AttributeConst.EMP_CODE,code);
+
+            //ログイン画面を表示
+            forward(ForwardConst.FW_LOGIN);
+        }
     }
 }

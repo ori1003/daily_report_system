@@ -234,6 +234,7 @@ public class EmployeeService extends ServiceBace{
     private void update(EmployeeView ev) {
         em.getTransaction().begin();
         Employee e=findOneInternal(ev.getId());
+        EmployeeConverter.copyViewToModel(e, ev);
         em.getTransaction().commit();
     }
 }

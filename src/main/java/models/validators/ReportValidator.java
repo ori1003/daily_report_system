@@ -13,7 +13,7 @@ public class ReportValidator {
      * @param rv 日報インスタンス
      * @return エラーのリスト
      */
-    public static List<String> valudate(ReportView rv){
+    public static List<String> validate(ReportView rv){
         List<String> errors=new ArrayList<String>();
 
         //タイトルのチェック

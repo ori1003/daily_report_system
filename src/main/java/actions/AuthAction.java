@@ -97,7 +97,7 @@ public class AuthAction extends ActionBase {
         //セッションからログイン従業のパラメータを削除
         removeSessionScope(AttributeConst.LOGIN_EMP);
         //セッションにログアウト時のフラッシュメッセージを追加
-        putRequestScope(AttributeConst.FLUSH,MessageConst.I_LOGOUT.getMessage());
+        putSessionScope(AttributeConst.FLUSH,MessageConst.I_LOGOUT.getMessage());
         //ログイン画面にリダイレクト
         redirect(ForwardConst.ACT_AUTH,ForwardConst.CMD_SHOW_LOGIN);
     }

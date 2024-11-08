@@ -28,13 +28,13 @@
                 </tr>
                 <tr>
                     <th>登録日時</th>
-                    <fmt:parseDate value="${report.createdAt}" pattern="yyyy-MM-dd" var="createDay"/>
-                    <td><fmt:formatDate value="${createDay}" pattern="yyyy-MM-dd"/></td>
+                    <fmt:parseDate value="${report.createdAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="createDay"/>
+                    <td><fmt:formatDate value="${createDay}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                 </tr>
                 <tr>
                     <th>更新日時</th>
-                    <fmt:parseDate value="${report.updatedAt}" pattern="yyyy-MM-dd" var="updateDay"/>
-                    <td><fmt:formatDate value="${reportDay}" pattern="yyyy-MM-dd"/></td>
+                    <fmt:parseDate value="${report.updatedAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="updateDay"/>
+                    <td><fmt:formatDate value="${updateDay}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                 </tr>
             </tbody>
         </table>

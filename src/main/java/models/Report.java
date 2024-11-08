@@ -60,7 +60,7 @@ public class Report {
 
     //日報のタイトル
     @Column(name=JpaConst.REP_COL_TITLE,length=255,nullable=false)
-    private String tilte;
+    private String title;
 
     //日報の内容
     @Lob

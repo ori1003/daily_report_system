@@ -235,7 +235,7 @@ public class EmployeeAction extends ActionBase {
      * @throws ServletException
      * @throws IOException
      */
-    public boolean checkAdmin() throws ServletException,IOException{
+    private boolean checkAdmin() throws ServletException,IOException{
         //セッションからログイン中の従業員情報を取得
         EmployeeView ev=(EmployeeView)getSessionScope(AttributeConst.LOGIN_EMP);
 

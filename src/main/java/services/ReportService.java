@@ -81,7 +81,7 @@ public class ReportService extends ServiceBace {
      * @return バリデーションで発生したエラーのリスト
      */
     public List<String> creat(ReportView rv){
-        List<String> errors=ReportValidator.valudate(rv);
+        List<String> errors=ReportValidator.validate(rv);
         if(errors.size()==0) {
             LocalDateTime ldt=LocalDateTime.now();
             rv.setCreatedAt(ldt);
@@ -100,7 +100,7 @@ public class ReportService extends ServiceBace {
      */
     public List<String> update(ReportView rv){
         //バリデーションを行う
-        List<String> errors=ReportValidator.valudate(rv);
+        List<String> errors=ReportValidator.validate(rv);
 
         if(errors.size()==0) {
             //更新日時を現在時刻に設定

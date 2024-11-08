@@ -70,6 +70,6 @@ public class Employee {
     @Column(name=JpaConst.EMP_COL_UPDATE_AT,nullable=false)
     private LocalDateTime updatedAt;
     //削除された従業員かどうか(現役：0、削除済み：1)
-    @Column(name=JpaConst.EMO_COL_DELETE_FLAG,nullable=false)
+    @Column(name=JpaConst.EMP_COL_DELETE_FLAG,nullable=false)
     private Integer deleteFlag;
 }

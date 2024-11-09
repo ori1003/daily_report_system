@@ -22,9 +22,9 @@ public class EmployeeConverter {
                 ev.getPassword(),
                 ev.getAdminFlag()==null
                         ?null
-                        :ev.getDeleteFlag()==AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
-                                ?JpaConst.EMP_DEL_TRUE
-                                :JpaConst.EMP_DEL_FALSE,
+                        :ev.getAdminFlag()==AttributeConst.ROLE_ADMIN.getIntegerValue()
+                                ?JpaConst.ROLE_ADMIN
+                                :JpaConst.ROLE_GENERAL,
                 ev.getCreatedAt(),
                 ev.getUpdatedAt(),
                 ev.getDeleteFlag()==null
